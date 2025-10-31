@@ -43,13 +43,13 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 .
 ├── .claude-plugin/
 │   └── marketplace.json          # Marketplace 核心配置
-├── skills/
+├── plugins/
 │   └── agent-ide/
 │       ├── SKILL.md              # 主要說明文件
 │       ├── references/
 │       │   ├── cli-reference.md  # CLI 指令參考
 │       │   └── examples.md       # 使用範例集
-│       └── agent-ide.zip         # 打包的 skill
+│       └── agent-ide.zip         # 打包的 plugin
 ├── CLAUDE.md                     # 本文件
 └── .gitignore
 ```
@@ -118,7 +118,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ### 新增 Plugin
 
-1. 在 `skills/` 目錄建立新的 plugin 資料夾
+1. 在 `plugins/` 目錄建立新的 plugin 資料夾
 2. 建立 `SKILL.md` 和必要的 references/assets
 3. 使用 skill-creator 驗證和打包
 4. 更新 `.claude-plugin/marketplace.json`
@@ -126,8 +126,8 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ### 驗證與測試
 
 ```bash
-# 驗證 skill 結構
-python3 /path/to/skill-creator/scripts/package_skill.py ./skills/plugin-name
+# 驗證 plugin 結構
+python3 /path/to/skill-creator/scripts/package_skill.py ./plugins/plugin-name
 
 # 本地測試
 /plugin marketplace add ./path/to/claude-code-plugin
