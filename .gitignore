@@ -1,0 +1,15 @@
+# Claude Code 本地設定
+.claude/
+
+# 作業系統
+.DS_Store
+Thumbs.db
+
+# IDE
+.idea/
+.vscode/
+*.swp
+
+# 臨時檔案
+*.log
+*.tmp
