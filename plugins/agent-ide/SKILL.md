@@ -1,6 +1,6 @@
 ---
 name: agent-ide
-description: 程式碼重構與分析專家工具集。使用 agent-ide 進行快速專案診斷、符號重命名、檔案移動、品質分析、依賴管理和循環依賴檢測。當需要理解專案結構、重構、大規模重命名、檔案結構調整、或程式碼品質分析時使用此 skill。支援 TypeScript 和 JavaScript 專案。
+description: Code refactoring and analysis toolkit using agent-ide CLI. Use this skill when the user needs to: (1) Analyze project structure and code quality with snapshots, (2) Rename symbols (classes, functions, variables) across files, (3) Move files and automatically update all import statements, (4) Detect circular dependencies and analyze dependency relationships, (5) Calculate ShitScore and identify code quality issues, (6) Refactor complex code (extract functions, reduce complexity). Supports TypeScript and JavaScript projects. Keywords: refactor, rename, move, analyze, quality, dependencies, snapshot, restructure, code smell, technical debt.
 ---
 
 # Agent IDE
