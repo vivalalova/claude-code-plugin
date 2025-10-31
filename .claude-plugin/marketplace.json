@@ -6,7 +6,7 @@
   },
   "metadata": {
     "description": "Vibe 團隊的 Claude Code 插件市場，提供程式碼分析、重構和品質管理工具",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "pluginRoot": "./plugins"
   },
   "plugins": [
@@ -14,7 +14,7 @@
       "name": "agent-ide",
       "source": "./agent-ide",
       "description": "Code refactoring and analysis toolkit. Use when analyzing code quality, renaming symbols, moving files, detecting circular dependencies, or restructuring projects",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "author": {
         "name": "Lova",
         "url": "https://github.com/vivalalova"
