@@ -15,7 +15,10 @@
       "source": "./agent-ide",
       "description": "程式碼重構與分析專家工具集。使用 agent-ide 進行快速專案診斷、符號重命名、檔案移動、品質分析、依賴管理和循環依賴檢測",
       "version": "1.0.0",
-      "author": "Lova",
+      "author": {
+        "name": "Lova",
+        "url": "https://github.com/vivalalova"
+      },
       "keywords": ["refactor", "analysis", "code-quality", "typescript", "javascript"],
       "category": "development"
     }
