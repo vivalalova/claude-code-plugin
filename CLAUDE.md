@@ -4,16 +4,54 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## 專案概述
 
-這是 Claude Code Plugin Marketplace 專案，用於建立和維護插件市場目錄。Plugin marketplace 是基於 JSON 的插件目錄系統，讓團隊能夠分發和管理 Claude Code 擴展功能。
+這是 Vibe 團隊的 Claude Code Plugin Marketplace 專案，提供程式碼分析、重構和品質管理工具。
 
-## 核心架構
+**Repository**: `https://github.com/vivalalova/claude-code-plugin`
 
-### 必要檔案結構
+### 包含的 Plugins
+
+- **agent-ide**: 程式碼重構與分析專家工具集
+  - 快速專案診斷（snapshot）
+  - 符號重命名、檔案移動
+  - 品質分析和 ShitScore 評分
+  - 依賴關係分析和循環依賴檢測
+  - CI/CD 整合支援
+
+## 快速開始
+
+### 安裝此 Marketplace
+
+```bash
+# 從 GitHub 安裝
+/plugin marketplace add vivalalova/claude-code-plugin
+
+# 或從本地路徑安裝（開發測試）
+/plugin marketplace add /path/to/claude-code-plugin
+```
+
+### 安裝 agent-ide Plugin
+
+```bash
+/plugin install agent-ide@vibe-plugins
+```
+
+## 專案架構
+
+### 檔案結構
 
 ```
 .
-└── .claude-plugin/
-    └── marketplace.json
+├── .claude-plugin/
+│   └── marketplace.json          # Marketplace 核心配置
+├── skills/
+│   └── agent-ide/
+│       ├── SKILL.md              # 主要說明文件
+│       ├── references/
+│       │   ├── cli-reference.md  # CLI 指令參考
+│       │   └── examples.md       # 使用範例集
+│       └── agent-ide.zip         # 打包的 skill
+├── CLAUDE.md                     # 本文件
+└── .gitignore
 ```
 
 ### marketplace.json Schema
@@ -76,42 +114,60 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 }
 ```
 
+## 開發流程
+
+### 新增 Plugin
+
+1. 在 `skills/` 目錄建立新的 plugin 資料夾
+2. 建立 `SKILL.md` 和必要的 references/assets
+3. 使用 skill-creator 驗證和打包
+4. 更新 `.claude-plugin/marketplace.json`
+
+### 驗證與測試
+
+```bash
+# 驗證 skill 結構
+python3 /path/to/skill-creator/scripts/package_skill.py ./skills/plugin-name
+
+# 本地測試
+/plugin marketplace add ./path/to/claude-code-plugin
+/plugin install plugin-name@vibe-plugins
+```
+
+### 發布流程
+
+1. 確認所有變更已 commit
+2. 更新 marketplace.json 的版本號
+3. Push 到 GitHub
+4. 使用者透過 GitHub 安裝最新版本
+
 ## 常用指令
 
 ### Marketplace 管理
 ```bash
-/plugin marketplace add owner/repo                    # 從 GitHub 新增
-/plugin marketplace add https://gitlab.com/repo.git   # 從 Git URL 新增
-/plugin marketplace add ./my-marketplace              # 從本地路徑新增
-/plugin marketplace list                              # 列出所有 marketplace
-/plugin marketplace update marketplace-name           # 更新 marketplace
-/plugin marketplace remove marketplace-name           # 移除 marketplace
+/plugin marketplace add vivalalova/claude-code-plugin  # 安裝此 marketplace
+/plugin marketplace list                               # 列出所有 marketplace
+/plugin marketplace update vibe-plugins                # 更新
+/plugin marketplace remove vibe-plugins                # 移除
 ```
 
 ### Plugin 操作
 ```bash
-/plugin install plugin-name@marketplace-name          # 安裝 plugin
-/plugin                                               # 瀏覽可用 plugins
-```
-
-### 驗證與測試
-```bash
-claude plugin validate .                              # 語法檢查
-/plugin marketplace add ./path/to/marketplace         # 本地測試
-/plugin install test-plugin@marketplace-name          # 驗證安裝
+/plugin install agent-ide@vibe-plugins                 # 安裝 agent-ide
+/plugin                                                # 瀏覽可用 plugins
 ```
 
 ## 團隊配置
 
-在 `.claude/settings.json` 中指定必要的 marketplaces：
+團隊成員可在 `.claude/settings.json` 中預設安裝此 marketplace：
 
 ```json
 {
   "extraKnownMarketplaces": {
-    "team-tools": {
+    "vibe-plugins": {
       "source": {
         "source": "github",
-        "repo": "org/claude-plugins"
+        "repo": "vivalalova/claude-code-plugin"
       }
     }
   }
@@ -136,9 +192,9 @@ claude plugin validate .                              # 語法檢查
 
 使用 `${CLAUDE_PLUGIN_ROOT}` 環境變數來引用安裝相對路徑。
 
-## 發布策略
+## 技術參考
 
-**建議使用 GitHub**：利用版本控制、issue tracking 和協作功能來託管 marketplace 並與團隊分享。
+### marketplace.json Schema 說明
 
 ## 疑難排解檢查清單
 
